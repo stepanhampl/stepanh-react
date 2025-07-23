@@ -1,0 +1,822 @@
+:root {
+    --background: rgb(255, 222, 172);
+    /* BELOW is color main color of navbar and text outside of navbar*/
+    --0: #002153;
+    /* BELOW is secondary color of navbar */
+    --1: rgb(190, 0, 0);
+    /* diameter of --background and --1 */
+    --2: rgb(214, 118, 123);
+    --3-black: rgb(0, 0, 0);
+}
+
+@keyframes disappear {
+    from {
+        font-size: 1000px;
+    }
+
+    to {
+        font-size: 0px;
+    }
+}
+
+@keyframes show-up-welcome-text {
+    0% {
+        font-size: 0;
+        color: var(--0);
+
+    }
+
+    50% {
+        font-size: 80px;
+        color: var(--1)
+    }
+
+    100% {
+        font-size: 62.5px;
+        color: var(--background);
+
+    }
+}
+
+html {
+    background-color: var(--background);
+    color: var(--0);
+    overflow-x: hidden;
+
+
+}
+
+body {
+    min-width: 320px;
+    width: 100%;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.btn {
+    color: var(--background);
+    background-color: var(--1);
+    border: 0.2rem solid var(--1);
+    border-radius: 10px;
+    margin: 0 5px 0;
+    text-align: center;
+    align-self: center;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Bebas Neue', cursive;
+    transition: -webkit-transform, -moz-transform, -ms-transform, -o-transform, transform;
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+    text-decoration: none;
+}
+
+.btn span {
+    color: var(--1);
+    background-color: var(--background);
+    padding: 0.1rem;
+    border-radius: 6px;
+    margin-right: 0.2rem;
+}
+
+.btn:hover {
+    cursor: pointer;
+    border-color: var(--0);
+}
+
+.btn:active {
+    -webkit-transform: scale(1, 0.8);
+    -moz-transform: scale(1, 0.8);
+    -ms-transform: scale(1, 0.8);
+    -o-transform: scale(1, 0.8);
+    transform: scale(1, 0.8);
+}
+
+.welcome {
+    height: 300px;
+    background-color: var(--0);
+    color: var(--background);
+    display: flex;
+    flex-direction: row;
+    padding: 20px 0 0 4vw;
+    justify-content: space-between;
+}
+
+.welcome-texts {
+    align-self: flex-start;
+    padding-top: 2rem;
+}
+
+.welcome>.img>img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+@keyframes welcome-img {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 150px;
+    }
+}
+
+.welcome>.img {
+    width: auto;
+    max-width: 30vw;
+    height: 100%;
+    padding: 4vw;
+    box-sizing: border-box;
+}
+
+.welcome-text {
+    display: flex;
+    padding: 10px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 0px;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+
+
+
+.welcome-text .js-added-welcome-text {
+    display: none;
+    line-height: 50px;
+}
+
+.js-added-welcome-text.js-added-00 {
+    animation-name: show-up-welcome-text;
+    animation-duration: 100ms;
+    font-size: 62.5px;
+    display: flex;
+
+}
+
+
+
+.welcome-text .js-added-welcome-text:hover {
+    color: var(--1)
+}
+
+/* 
+.welcome-letter {
+    font-family: 'Glegoo', serif;
+    font-weight: 1000;
+    font-size: 0px;
+} */
+/* 
+.welcome-text > .js-added-welcome-text {
+    animation: show-up-welcome-letter 1000ms ease-out;
+    font-size: 250px;
+} */
+
+.navbar {
+    padding: 0.2rem 0;
+    background-color: var(--0);
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    width: 100%;
+    height: auto;
+    top: 300px;
+    z-index: 998;
+    position: fixed;
+}
+
+/* added with JavaScript to make navbar stick when reaches top of window */
+/* .sticky-navbar {
+    position: fixed;
+    top: 0;
+} */
+
+/* navbar-links = container with all elements called "navbar-link" */
+.navbar-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Arial Narrow Bold', sans-serif;
+    background-color: var(--0);
+    padding-right: 2.5%;
+}
+
+.navbar-link {
+    display: flex;
+    font-family: 'Glegoo', serif;
+}
+
+.navbar-button {
+    display: inline-block;
+    width: 8rem;
+    text-align: center;
+    padding: 0.3rem;
+    margin: 0.2rem;
+    border: 2px solid transparent;
+    /* animations included below */
+    transition-duration: 400ms;
+    transition-property: background, transform, font-weight, border;
+}
+
+.navbar-button.language {
+    width: 2rem;
+    background-color: var(--background);
+}
+
+.navbar-button:hover {
+    background-color: var(--1);
+    transform: rotate(45deg);
+    border: 2px solid var(--background);
+}
+
+.navbar-button.language:hover {
+    background-color: var(--1);
+    transform: rotate(45deg);
+    border: 2px solid var(--background);
+}
+
+.navbar-button.current {
+    background-color: var(--1);
+    transform: rotate(-45deg);
+    border: 2px solid var(--background);
+}
+
+.navbar-button-expand {
+    color: var(--1);
+    display: none;
+    position: absolute;
+    padding: .1rem 0.5rem;
+    left: calc(100vw - 200px);
+    margin-top: 12.5px;
+    transform: translate(-50%, -50%);
+    min-width: 300px;
+    max-width: fit-content;
+    background-color: var(--background);
+    border: 2px solid var(--1);
+    text-align: center;
+    border-radius: 10px;
+    font-family: 'Oswald', sans-serif;
+
+    /* below: I was unable to set transition delay: */
+    /* transition-property: top, display, background-color;
+    transition-duration: 2000ms;
+    transition-delay: 2000ms; */
+}
+
+.navbar-button {
+    text-decoration: none;
+    color: var(--background);
+    text-align: center;
+    font-size: 1rem;
+}
+
+.navbar-button:hover+.navbar-button-expand {
+    display: inline;
+    top: 3.5rem;
+}
+
+.navbar-button.current+.navbar-button-expand {
+    display: inline;
+    top: 3.5rem;
+}
+
+/* 
+.navbar-button:hover+.navbar-button-expand.sticky-navbar-button-expand, .navbar-button.current+.navbar-button-expand.sticky-navbar-button-expand {
+    top: 3.5rem;
+} */
+
+.navbar-logo {
+    display: inline;
+    width: max-content;
+    font-size: 1.5rem;
+    background-color: var(--1);
+    padding: 0.5rem 0.25rem;
+    padding-left: calc(4vw + 10px);
+    border-radius: 0 1rem 1rem 0;
+    color: var(--background);
+    border: 2px solid var(--background);
+    border-left: none;
+    font-family: 'Bebas Neue', cursive;
+    font-weight: lighter;
+    transition-duration: 750ms;
+    transition-property: transform;
+    transition-timing-function: ease-in;
+    text-decoration: none;
+}
+
+
+.navbar-logo:hover {
+    transform: rotate(900deg);
+}
+
+.navbar-logo:active {
+    font-size: 1rem;
+    margin: 0.25rem .70rem;
+}
+
+/* BELOW is an emoji (star), that is supposed to show up after clicking .navbar-logo and disappear */
+
+.animation-01 {
+    display: none;
+    font-size: 500px;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    transition-property: font-size;
+    transition-timing-function: linear;
+    transition-duration: 500ms;
+    animation-timing-function: ease-out;
+}
+
+
+/* .animation-01.disappear{
+    font-size: 100px;
+} */
+
+.navbar-logo span {
+    color: var(--1);
+    background-color: var(--background);
+    padding: 0.1rem;
+    border-radius: 0.7rem;
+}
+
+.hamburger {
+    align-items: center;
+    display: none;
+    color: var(--background);
+    background-color: var(--0);
+    border: none;
+    padding-right: 2%;
+}
+
+.hamburger svg {
+    width: 2rem;
+    height: 2rem;
+    padding: 0rem;
+}
+
+.logo-hamburger {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* so far setting dektop version */
+
+/* responsivity below */
+
+@media (max-width: 1150px) {
+    .js-added-welcome-text.js-added-00 {
+        font-size: 37.5px;
+    }
+
+    @keyframes show-up-welcome-text {
+        0% {
+            font-size: 0;
+            color: var(--0);
+            justify-content: flex-end;
+
+        }
+
+        50% {
+            font-size: 57.5px;
+            color: var(--1)
+        }
+
+        100% {
+            font-size: 37.5px;
+            color: var(--background);
+
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .js-added-welcome-text.js-added-00 {
+        font-size: 33px;
+    }
+
+    @keyframes show-up-welcome-text {
+        0% {
+            font-size: 0;
+            color: var(--0);
+            justify-content: flex-end;
+
+        }
+
+        50% {
+            font-size: 46.5px;
+            color: var(--1)
+        }
+
+        100% {
+            font-size: 33px;
+            color: var(--background);
+
+        }
+    }
+
+}
+
+@media (max-width: 700px) {
+    .js-added-welcome-text.js-added-00 {
+        font-size: 29px;
+    }
+
+    @keyframes show-up-welcome-text {
+        0% {
+            font-size: 0;
+            color: var(--0);
+            justify-content: flex-end;
+
+        }
+
+        50% {
+            font-size: 44px;
+            color: var(--1)
+        }
+
+        100% {
+            font-size: 29px;
+            color: var(--background);
+
+        }
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        align-items: flex-start;
+        display: none;
+        margin-top: 1rem;
+    }
+
+    .navbar-link {
+        display: inline;
+        margin-left: none;
+        width: 100%;
+    }
+
+    .nabvbar {
+        padding: 0;
+    }
+
+    .navbar.clicked {
+        margin-bottom: -24rem;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .navbar-button {
+        width: 4rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .navbar-button:hover+.navbar-button-expand, .navbar-button.current+.navbar-button-expand {
+        position: relative;
+        display: inline;
+        top: 0rem;
+        left: 1rem;
+        width: 200%;
+        left: 0;
+        background-color: var(--background);
+        font-size: 0.8rem;
+    }
+
+    .navbar-button.language {
+        margin: 0 2rem;
+    }
+
+    .text.after-text, .text:nth-child(2) {
+        display: none;
+    }
+}
+
+
+
+@media(max-width: 600px) {
+
+
+    .welcome {
+        flex-direction: column;
+        align-content: space-between;
+
+    }
+
+    .welcome .img {
+        width: auto;
+        max-width: 90px;
+        height: 100%;
+        padding: 0;
+        margin-left: calc(90% - 90px);
+        box-sizing: border-box;
+    }
+
+    .welcome-texts {
+        padding-top: 0;
+        min-height: 150px;
+    }
+
+
+
+}
+
+@media(max-width: 500px) {
+    .js-added-welcome-text.js-added-00 {
+        font-size: 23px;
+        line-height: 30px;
+    }
+
+    @keyframes show-up-welcome-text {
+        0% {
+            font-size: 0;
+            color: var(--0);
+            justify-content: flex-end;
+
+        }
+
+        50% {
+            font-size: 34px;
+            color: var(--1)
+        }
+
+        100% {
+            font-size: 23px;
+            color: var(--background);
+
+        }
+    }
+}
+
+.highlight {
+    font-weight: bolder;
+}
+
+/* NAVBAR ABOVE */
+
+/* MAIN BELOW */
+
+#non-navbar {
+    overflow: hidden;
+    padding-left: 4vw;
+    padding-top: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+#non-navbar>* {
+    line-height: 1.3rem;
+    box-sizing: border-box;
+}
+
+.heading {
+    flex: 1 1 20%;
+    padding: 12px 10px 12px;
+    padding-left: 0 important!;
+    display: inline-block;
+    text-transform: lowercase;
+    padding: 12px 10px;
+    line-height: 2rem;
+}
+
+.text {
+    flex: 1 1 60%;
+    padding: 12px 10px;
+    font-family: 'Glegoo', serif;
+    font-size: 15px;
+    text-align: justify;
+}
+
+.after-text {
+    flex: 1 1 20%;
+    padding: 12px 0;
+    display: flex;
+}
+
+
+
+.after-text>.btn {
+    align-self: flex-start;
+}
+
+.text p {
+    padding-bottom: 1rem;
+}
+
+/* setup table */
+.text.flex-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.text.flex-text .row {
+    flex: 1 0;
+    flex-direction: row;
+    padding: 0.25rem 0;
+    display: flex;
+}
+
+.text.flex-text .row .column {
+    word-wrap: break-word;
+    text-align: left;
+}
+
+.text.flex-text .row .column.c00 {
+    flex: 0 0 50px;
+    font-size: 1.5rem;
+}
+
+.text.flex-text .row .column.c01 {
+    flex: 0 0 120px;
+}
+
+.text.flex-text .row .column.c02 {
+    flex: 0 0 calc(100% - 120px - 50px)
+}
+
+.text ul {
+    list-style: circle;
+    padding: 0.5rem 0 0 2rem;
+}
+
+#non-navbar .intro p {
+    font-family: 'Roboto Mono', monospace;
+    text-indent: 0;
+}
+
+.heading-0 {
+    font-size: 30px;
+    font-family: 'Bakbak One', cursive;
+
+}
+
+.heading-1 {
+    font-size: 20px;
+    font-family: 'Oswald', sans-serif;
+}
+
+/* @media (max-width: 1000px) {
+    #non-navbar .text {
+        padding-right: 20%;
+        flex-basis: 60%;
+    }
+} */
+
+/* @media (max-width: 850px) {
+    #non-navbar .text {
+        padding-right: 10%;
+        flex-basis: 70%
+    }
+} */
+
+@media (max-width: 700px) {
+    #non-navbar {
+        padding-top: 3rem;
+        flex-direction: column;
+    }
+
+    #non-navbar .text{
+        padding-right: 5%;
+        padding-left: 10px;
+    }
+
+    #non-navbar a.btn{
+        margin-left: 10px;
+    }
+}
+
+/* added to #non-navbar while navbar is sticked to top */
+.below-sticky-non-navbar {
+    margin-top: 3.3rem;
+}
+
+input.to-copy {
+    background-color: var(--0);
+    color: var(--background);
+    border: 0px;
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+    width: 12rem;
+}
+
+input.to-copy~.btn-copy {
+    margin-left: 0 !important;
+}
+
+input.to-copy:focus {
+    outline: none;
+
+}
+
+@keyframes each-letter {
+    0% {
+        color: var(--0);
+    }
+
+    30% {
+        color: var(--1);
+        font-size: 2rem;
+    }
+
+    100% {
+        font-size: 1rem;
+    }
+}
+
+/* needed for animating each letter */
+/* .js-added-welcome-text {
+    animation-name: each-letter;
+    animation-duration: 1000ms;
+} */
+
+#bottom {
+    display: flex;
+    position: fixed;
+    color: var(--background);
+    background-color: var(--0);
+    bottom: 0;
+    z-index: 0;
+    width: 100%;
+    height: 44px;
+    padding: auto;
+    justify-items: space-between;
+}
+
+#bottom>* {
+    margin: auto 15px;
+    line-height: 1.3rem;
+}
+
+#bottom>*:last-child {
+    margin-left: auto
+}
+
+/* set main's padding-bottom greater than bottom's height*/
+#non-navbar {
+    padding-bottom: 75px;
+}
+
+#bottom>a {
+    border-bottom: var(--0);
+}
+
+.flag {
+    max-width: 1.5rem;
+    max-height: 0.9rem;
+}
+
+img.icon {
+    height: 1.5rem;
+}
+
+.cont-icon {
+    background-color: var(--background);
+    padding: 0.2rem;
+    border-radius: 50%;
+    display: inline-flex;
+}
+
+.description {
+    color: var(--background);
+    display: inline-block;
+    margin-left: 0.5rem;
+}
+
+.pack-cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+a.pack-cont {
+    text-decoration: none;
+}
+
+@media(max-width: 420px) {
+    #bottom {
+        /* flex-direction: column; */
+        padding: 0;
+    }
+
+    #bottom * {
+        margin: auto important !;
+    }
+
+    #bottom p, .description {
+        display: none;
+    }
+}
